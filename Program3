@@ -1,0 +1,46 @@
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+int main()
+{
+    // Declare the needed file items and variables needed.
+    int amount = 1000;
+
+    int townYear = 1900, totalPeople, stars;
+    string fileName;
+    ifstream infile;
+
+    cout << "Please enter the name of the data file: ";
+    cin >> fileName;
+// Check if the file opens, provide a fail-safe message if it does not.
+    infile.open(fileName);
+    if (infile.fail())
+    {
+        cout << "Could not open file " << fileName << endl;
+        return 1;
+    }
+// Print out the town population growth chart.
+    cout << "Town Population Growth \n";
+    cout << "(Each * = 1,000 people) \n";
+
+// Read out the file and print out the necessary amount of stars for each year.
+    while (infile >> totalPeople)
+    {
+        cout << townYear << ": ";
+        stars = totalPeople / amount;
+
+
+        for (int j = 0; j < stars; j++)
+            cout << "*";
+
+        cout << endl;
+
+
+        townYear += 20;
+    }
+
+    infile.close();
+
+    return 0;
+}
