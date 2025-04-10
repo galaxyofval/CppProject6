@@ -1,0 +1,23 @@
+// Program 4
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+int main()
+{
+    cout << "Forwards Pattern: \n"; // Separating the forwards and backwards patterns with a nice banner.
+    for (int i = 1; i < 11; i++) { // Determine how many pluses need to be created.
+        for (int j = 0; j < i; j++) { // Create pluses until the needed number is reached.
+        cout << "+";
+        }
+        cout << "\n"; // Add a newline character to separate each row of pluses.
+    }
+    cout << "Backwards Pattern: \n";
+    for (int i = 10; i > 0; i--) {
+        for (int j = 0; j < i; j++) {
+        cout << "+";
+        }
+        cout << "\n";
+    }
+    return 0;
+}
