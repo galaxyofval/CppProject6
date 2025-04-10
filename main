@@ -1,0 +1,49 @@
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+int main()
+{
+    double organisms = 0;
+    int days = 0;
+    double percentage = 0;
+    cout << fixed << setprecision(0); // Makes sure all values are displayed as integers at the end.
+    cout<< "Please enter the starting amount of organisms. \n";
+    cin >> organisms;
+    // Repeatedly ask the user until they put in a valid amount of organisms, blocking out everything from lower values to decimals, to even non-numbers.
+    while (cin.fail() || cin.peek() != '\n' || organisms < 2) {
+        cin.clear();
+        cin.ignore(10000, '\n');
+        cout << "Invalid amount of organisms. \n";
+        cout<< "Please enter the starting amount of organisms. \n";
+        cin >> organisms;        
+    }
+    cout << "How many days will they be reproducing for? \n";
+    cin >> days;
+    // Same goes on here as the organism fail-safe.
+    while (cin.fail() || cin.peek() != '\n' || days < 1) {
+        cin.clear();
+        cin.ignore(10000, '\n');
+        cout << "Invalid amount of days. \n";
+        cout<< "How many days will they be reproducing for? \n";
+        cin >> days;        
+    }   
+    cout << "What is their reproduction rate? (in %) \n";
+    cin >> percentage;
+    // Again with the same fail-safe system.
+    while (cin.fail() || cin.peek() != '\n' || percentage < 0) {
+        cin.clear();
+        cin.ignore(10000, '\n');
+        cout << "Invalid percentage. \n";
+        cout<< "What is their reproduction rate? (in %) \n";
+        cin >> percentage;        
+    }   
+    // Show the final settings of how the parameters were set up.
+    cout << organisms << " organisms will be reproducing at a " << percentage << " percent rate for " << days << " days. \n";   
+    // Cycle through the loop, displaying the added organisms for each day.
+    for (int i = 0; i < days + 1; i++) {
+    organisms += (organisms * (percentage / 100));
+    cout << "Day " << i << ": " << organisms << " organisms. \n";
+    }
+    return 0;
+}
