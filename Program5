@@ -1,0 +1,44 @@
+// Program 5
+#include <iostream>
+#include <iomanip>
+#include <cstdlib>
+#include <ctime>
+using namespace std;
+
+int main()
+{
+    srand(time(0));
+    // Set the random number
+	int correctNumber = rand() % 10 + 1;
+	int totalTries = 1;
+	int guess = 0;
+	cout << "Pick a number between 1-10. \n";
+	// cout << "Debug: Correct answer is " << correctNumber << "\n";
+	cin >> guess;
+	if (guess == correctNumber) {
+		cout << "You got the correct number on your first try? Incredible! You win!"; // Give a special message if the player gets the number on the first try.
+	}
+	else {
+		if (guess < correctNumber) {
+			cout << "Higher! \n";
+		}
+		else if (guess > correctNumber) {
+			cout << "Lower! \n";
+		}
+		while (guess != correctNumber) {
+			totalTries++; // Add a try to the total.
+			cout << "Pick a number between 1-10. \n";
+			cin >> guess;
+			if (guess < correctNumber) {
+				cout << "Higher! \n";
+			}
+			else if (guess > correctNumber) {
+				cout << "Lower! \n";
+			}
+			else {
+				cout << "You got the correct number! It took you " << totalTries << " tries!"; // Congratulate the player and tell them how many tries it took.
+			}
+		}
+	}
+
+	return 0;
